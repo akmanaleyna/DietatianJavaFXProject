@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.YeniDanisanEkleController">
+   <children>
+      <ScrollPane layoutY="-1.0" prefHeight="400.0" prefWidth="500.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+         <content>
+            <VBox alignment="TOP_CENTER" prefHeight="624.0" prefWidth="478.0">
+               <children>
+                  <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Yeni Danışan Kayıt">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="15.0" top="15.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="478.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Adı Soyadı:">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lblAdi" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Email Adresi:">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lblEmail" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Şifre:">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lblSifre" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Cinsiyet">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="rdobCinsiyetKadin" mnemonicParsing="false" selected="true" text="Kadın">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="cinsiyet" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="rdobCinsiyetErkek" mnemonicParsing="false" text="Erkek" toggleGroup="$cinsiyet">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Yaş:">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lblYas" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="457.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Boy:">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lblBoy" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Kilo">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lblKilo" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Hedef Kilo:">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="lblHedefKilo" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Varsa Hastalıkları:">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="textAreaHastalik" prefHeight="200.0" prefWidth="200.0" styleClass="text-input" stylesheets="@../Styles/login.css">
+                           <HBox.margin>
+                              <Insets bottom="15.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Not: ">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                        <TextArea fx:id="textareaNot" prefHeight="200.0" prefWidth="200.0" styleClass="text-input" stylesheets="@../Styles/login.css">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </TextArea>
+                     </children>
+                  </HBox>
+                  <Button fx:id="btnKaydet" alignment="CENTER" mnemonicParsing="false" styleClass="button1" stylesheets="@../Styles/login.css" text="Kaydet">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

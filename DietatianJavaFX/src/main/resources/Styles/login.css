@@ -1,0 +1,43 @@
+.login_container{
+    -fx-background-color: #E3D4FF;
+}
+.linear-grad{
+    -fx-background-color: linear-gradient(to bottom left, #E3D4FF, #432C81);
+}
+.text-input{
+    -fx-background-radius: 20;
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: #432C81;
+}
+.button1{
+    -fx-background-radius: 20;
+    -fx-background-color: #E3D4FF;
+    -fx-text-fill: #000000;
+}
+.button1:hover{
+    -fx-text-fill: #432C81;
+ }
+.button1:pressed{
+    -fx-text-fill: #E3D4FF;
+ }
+ .button1:active{
+     -fx-text-fill: #E3D4FF;
+  }
+.report-container{
+    -fx-alignment : center;
+}
+.label-text{
+        -fx-text-fill: #432C81;
+}
+.pane_container{
+     -fx-background-radius: 20;
+}
+.button_danisan{
+    -fx-background-radius: 20;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+}
+.danisan_icerik{
+    -fx-background-radius: 50;
+     -fx-background-color: #ffffff;
+}

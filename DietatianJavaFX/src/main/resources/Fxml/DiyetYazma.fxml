@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.DiyetYazmaControllers">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="report-container" stylesheets="@../Styles/login.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label stylesheets="@../Styles/login.css" text="Yeni Diyet Listesi">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <styleClass>
+                        <String fx:value="report-container" />
+                        <String fx:value="label-text" />
+                     </styleClass>
+                  </Label>
+                  <ChoiceBox fx:id="ComboOgun" prefHeight="34.0" prefWidth="285.0" styleClass="text-input">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <ChoiceBox fx:id="ComboYiyecek" prefHeight="34.0" prefWidth="285.0" styleClass="text-input">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </ChoiceBox>
+                  <HBox prefHeight="54.0" prefWidth="400.0" styleClass="report-container" stylesheets="@../Styles/login.css">
+                     <children>
+                        <Spinner fx:id="spinnerAdet" styleClass="text-input" stylesheets="@../Styles/login.css">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </Spinner>
+                        <Button fx:id="btnEkle" mnemonicParsing="false" styleClass="button1" stylesheets="@../Styles/login.css" text="Ekle">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnCikar" mnemonicParsing="false" styleClass="button1" stylesheets="@../Styles/login.css" text="Çıkar">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="TextAreaToplam" prefHeight="200.0" prefWidth="200.0" styleClass="text-input" stylesheets="@../Styles/login.css">
+                     <VBox.margin>
+                        <Insets bottom="15.0" left="50.0" right="50.0" top="10.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" stylesheets="@../Styles/login.css" text="Toplam Kalori :">
+                           <styleClass>
+                              <String fx:value="report-container" />
+                              <String fx:value="label-text" />
+                           </styleClass>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="-15.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="lblToplamKalori" alignment="CENTER" contentDisplay="CENTER" stylesheets="@../Styles/login.css" text="1500">
+                           <HBox.margin>
+                              <Insets bottom="-10.0" left="15.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="label-text" />
+                              <String fx:value="report-container" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="-20.0" left="120.0" right="120.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Button fx:id="btnGonder" mnemonicParsing="false" styleClass="button1" stylesheets="@../Styles/login.css" text="Gönder">
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
