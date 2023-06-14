@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.DiyetYazmaControllers">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -32,19 +31,19 @@
                         <String fx:value="label-text" />
                      </styleClass>
                   </Label>
-                  <ChoiceBox fx:id="ComboOgun" prefHeight="34.0" prefWidth="285.0" styleClass="text-input">
+                  <ChoiceBox fx:id="ComboOgun" prefHeight="34.0" prefWidth="285.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="ComboYiyecek" prefHeight="34.0" prefWidth="285.0" styleClass="text-input">
+                  <ChoiceBox fx:id="ComboYiyecek" prefHeight="34.0" prefWidth="285.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css">
                      <VBox.margin>
                         <Insets bottom="20.0" left="20.0" right="20.0" />
                      </VBox.margin>
                   </ChoiceBox>
                   <HBox prefHeight="54.0" prefWidth="400.0" styleClass="report-container" stylesheets="@../Styles/login.css">
                      <children>
-                        <Spinner fx:id="spinnerAdet" styleClass="text-input" stylesheets="@../Styles/login.css">
+                        <Spinner fx:id="spinnerAdet" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css">
                            <HBox.margin>
                               <Insets right="15.0" />
                            </HBox.margin>
@@ -64,7 +63,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <TextArea fx:id="TextAreaToplam" prefHeight="200.0" prefWidth="200.0" styleClass="text-input" stylesheets="@../Styles/login.css">
+                  <TextArea fx:id="TextAreaToplam" prefHeight="200.0" prefWidth="200.0" styleClass="label-text" stylesheets="@../Styles/login.css">
                      <VBox.margin>
                         <Insets bottom="15.0" left="50.0" right="50.0" top="10.0" />
                      </VBox.margin>

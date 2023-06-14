@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.YeniDanisanEkleController">
    <children>
       <ScrollPane layoutY="-1.0" prefHeight="400.0" prefWidth="500.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
@@ -38,7 +37,7 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="lblAdi" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="lblAdi" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -51,7 +50,7 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="lblEmail" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="lblEmail" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -64,7 +63,7 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="lblSifre" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="lblSifre" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -102,7 +101,7 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="lblYas" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="lblYas" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="457.0">
@@ -115,7 +114,7 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="lblBoy" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="lblBoy" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -128,7 +127,7 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="lblKilo" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="lblKilo" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -141,7 +140,7 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="lblHedefKilo" styleClass="text-input" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="lblHedefKilo" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
@@ -154,7 +153,7 @@
                               <Font size="17.0" />
                            </font>
                         </Label>
-                        <TextArea fx:id="textAreaHastalik" prefHeight="200.0" prefWidth="200.0" styleClass="text-input" stylesheets="@../Styles/login.css">
+                        <TextArea fx:id="textAreaHastalik" prefHeight="200.0" prefWidth="200.0" styleClass="label-text" stylesheets="@../Styles/login.css">
                            <HBox.margin>
                               <Insets bottom="15.0" />
                            </HBox.margin>

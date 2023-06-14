@@ -35,7 +35,7 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                               </Label>
-                              <DatePicker fx:id="datePTarih" />
+                              <DatePicker fx:id="datePTarih" styleClass="label-text" stylesheets="@../Styles/login.css" />
                            </children>
                            <VBox.margin>
                               <Insets top="15.0" />
@@ -223,12 +223,12 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField fx:id="txtFieldAd" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="txtFieldAd" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </TextField>
-                        <TextField fx:id="txtFieldTarih" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="txtFieldTarih" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="16.0" />
                            </font>

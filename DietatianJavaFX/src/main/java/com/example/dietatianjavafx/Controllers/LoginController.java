@@ -1,3 +1,5 @@
+
+
 package com.example.dietatianjavafx.Controllers;
 
 import com.example.dietatianjavafx.Models.Model;
@@ -71,3 +73,5 @@ public class LoginController implements Initializable {
         Model.getInstance().getViewFactory().showHomePage();
     }
 }
+
+

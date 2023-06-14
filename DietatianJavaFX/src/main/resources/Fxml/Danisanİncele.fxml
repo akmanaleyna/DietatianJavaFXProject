@@ -28,7 +28,7 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tblView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="189.0">
+                  <TableView fx:id="tblView" nodeOrientation="LEFT_TO_RIGHT" prefHeight="400.0" prefWidth="189.0" styleClass="label-text" stylesheets="@../Styles/login.css">
                     <columns>
                       <TableColumn prefWidth="75.0" text="Tarih" />
                       <TableColumn prefWidth="75.0" text="Kilo" />
@@ -57,7 +57,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtFieldTarih" prefHeight="26.0" prefWidth="120.0" styleClass="label-text" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="txtFieldTarih" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="214.0">
@@ -70,7 +70,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtFieldSaat" prefHeight="26.0" prefWidth="120.0" styleClass="label-text" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="txtFieldSaat" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="214.0">
@@ -83,7 +83,7 @@
                               <Font size="15.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="txtFieldKilo" prefHeight="26.0" prefWidth="120.0" styleClass="label-text" stylesheets="@../Styles/login.css" />
+                        <TextField fx:id="txtFieldKilo" prefHeight="26.0" prefWidth="120.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                      </children>
                   </HBox>
                   <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="214.0">

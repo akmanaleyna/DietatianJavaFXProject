@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.HomePageController">
    <children>
       <VBox prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -183,7 +182,7 @@
                   </VBox>
                </children>
             </HBox>
-            <VBox alignment="CENTER" prefHeight="164.0" prefWidth="660.0" style="-fx-background-color: #DBDFEA;" styleClass="pane_container" stylesheets="@../Styles/login.css">
+            <VBox alignment="CENTER" prefHeight="164.0" prefWidth="660.0" style="-fx-background-color: #DBDFEA; -fx-background-radius: 20;">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
@@ -216,7 +215,7 @@
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField prefHeight="26.0" prefWidth="309.0" GridPane.columnIndex="1">
+                        <TextField prefHeight="26.0" prefWidth="309.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" right="10.0" />
                            </GridPane.margin>

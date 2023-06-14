@@ -4,25 +4,11 @@
 .linear-grad{
     -fx-background-color: linear-gradient(to bottom left, #E3D4FF, #432C81);
 }
-.text-input{
-    -fx-background-radius: 20;
-    -fx-text-fill: #ffffff;
-    -fx-prompt-text-fill: #432C81;
-}
 .button1{
     -fx-background-radius: 20;
     -fx-background-color: #E3D4FF;
     -fx-text-fill: #000000;
 }
-.button1:hover{
-    -fx-text-fill: #432C81;
- }
-.button1:pressed{
-    -fx-text-fill: #E3D4FF;
- }
- .button1:active{
-     -fx-text-fill: #E3D4FF;
-  }
 .report-container{
     -fx-alignment : center;
 }

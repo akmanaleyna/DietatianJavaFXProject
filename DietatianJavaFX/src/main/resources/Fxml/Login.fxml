@@ -14,9 +14,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.LoginController">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="260.0" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="400.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <Pane prefHeight="400.0" prefWidth="300.0" styleClass="linear-grad" BorderPane.alignment="CENTER">
+            <Pane prefHeight="400.0" prefWidth="300.0" styleClass="linear-grad" stylesheets="@../Styles/login.css" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="75.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -36,7 +36,7 @@
                <children>
                   <Pane fx:id="pnlForgotPassworld" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                      <children>
-                        <TextField fx:id="tfNewEmail" layoutX="44.0" layoutY="154.0" prefHeight="40.0" prefWidth="245.0" promptText="Email" />
+                        <TextField fx:id="tfNewEmail" layoutX="44.0" layoutY="154.0" prefHeight="40.0" prefWidth="245.0" promptText="Email" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                         <Button fx:id="btnNewPassword" layoutX="104.0" layoutY="206.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="114.0" styleClass="button1" stylesheets="@../Styles/login.css" text="Gönder" />
                         <Button fx:id="bntBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #fff; -fx-border-color: #fff;" text="&lt;">
                            <font>
@@ -47,8 +47,8 @@
                   </Pane>
                   <Pane fx:id="pnlSingUp" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <TextField fx:id="tfEmail" layoutX="39.0" layoutY="110.0" prefHeight="40.0" prefWidth="245.0" promptText="Email" />
-                        <PasswordField fx:id="tfPassword" layoutX="39.0" layoutY="186.0" prefHeight="40.0" prefWidth="245.0" promptText="Password" />
+                        <TextField fx:id="tfEmail" layoutX="39.0" layoutY="110.0" prefHeight="40.0" prefWidth="245.0" promptText="Email" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
+                        <PasswordField fx:id="tfPassword" layoutX="39.0" layoutY="186.0" prefHeight="40.0" prefWidth="245.0" promptText="Password" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                         <Button fx:id="btnSingIn" layoutX="167.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="114.0" styleClass="button1" stylesheets="@../Styles/login.css" text="Giriş" />
                         <Button fx:id="btmParola" layoutX="39.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #fff; -fx-border-color: #fff;" text="Parolamı Unuttum" />
                      </children>

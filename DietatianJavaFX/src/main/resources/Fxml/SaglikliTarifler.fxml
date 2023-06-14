@@ -22,7 +22,7 @@
          <children>
             <HBox prefHeight="45.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="txtTarifAra" prefHeight="26.0" prefWidth="666.0" promptText="Tarif Ara." styleClass="text-input" stylesheets="@../Styles/login.css">
+                  <TextField fx:id="txtTarifAra" prefHeight="26.0" prefWidth="666.0" promptText="Tarif Ara." style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css">
                      <HBox.margin>
                         <Insets bottom="10.0" left="20.0" right="20.0" top="15.0" />
                      </HBox.margin>
@@ -96,7 +96,7 @@
                   </AnchorPane>
                </children>
             </HBox>
-            <AnchorPane prefHeight="158.0" prefWidth="600.0" style="-fx-background-color: #F0EEF4;" styleClass="pane_container" stylesheets="@../Styles/login.css">
+            <AnchorPane prefHeight="158.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: #F0EEF4;">
                <VBox.margin>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
@@ -109,7 +109,7 @@
                         <Insets left="15.0" />
                      </padding>
                   </Label>
-                  <HBox prefHeight="179.0" prefWidth="670.0" styleClass="pane_container" stylesheets="@../Styles/login.css">
+                  <HBox prefHeight="179.0" prefWidth="670.0" style="-fx-background-radius: 20;">
                      <children>
                         <ImageView fx:id="ımgViewTarif" fitHeight="113.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
@@ -134,7 +134,7 @@
                               <Insets bottom="15.0" top="15.0" />
                            </HBox.margin>
                            <children>
-                              <TextField fx:id="txtBaslik" prefHeight="33.0" prefWidth="170.0" styleClass="text-input" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" />
+                              <TextField fx:id="txtBaslik" prefHeight="33.0" prefWidth="170.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" />
                               <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Başlık:">
                                  <font>
                                     <Font size="14.0" />
@@ -151,7 +151,7 @@
                                     <Insets left="15.0" />
                                  </padding>
                               </Label>
-                              <TextField fx:id="TxtIcerik" prefHeight="33.0" prefWidth="170.0" styleClass="text-input" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="TxtIcerik" prefHeight="33.0" prefWidth="170.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Tarif:" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="14.0" />
@@ -160,7 +160,7 @@
                                     <Insets left="15.0" />
                                  </padding>
                               </Label>
-                              <TextField fx:id="txtTarif" prefHeight="33.0" prefWidth="170.0" styleClass="text-input" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="txtTarif" prefHeight="33.0" prefWidth="170.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Kalori" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="14.0" />
@@ -169,7 +169,7 @@
                                     <Insets left="15.0" />
                                  </padding>
                               </Label>
-                              <TextField fx:id="txtKalori" prefHeight="33.0" prefWidth="170.0" styleClass="text-input" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="txtKalori" prefHeight="33.0" prefWidth="170.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                         <BorderPane prefHeight="174.0" prefWidth="228.0">
