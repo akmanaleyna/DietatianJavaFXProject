@@ -2,6 +2,8 @@
 
 package com.example.dietatianjavafx.Controllers;
 
+import com.example.dietatianjavafx.Models.CRUDFirebase;
+import com.example.dietatianjavafx.Models.Dietician;
 import com.example.dietatianjavafx.Models.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,6 +51,9 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField tfPassword;
 
+    //private final CRUDFirebase crudFirebase = new CRUDFirebase();
+
+
     @FXML
     void handleButtonAction(ActionEvent event) {
         if(event.getSource().equals(btnSingIn)){
@@ -69,9 +74,18 @@ public class LoginController implements Initializable {
         btnSingIn.setOnAction(event -> onLogin());
     }
     private void onLogin(){
-        Model.getInstance().getViewFactory().closeStage((Stage) btmParola.getScene().getWindow());
-        Model.getInstance().getViewFactory().showHomePage();
+        //if(islogin())
+            Model.getInstance().getViewFactory().closeStage((Stage) btmParola.getScene().getWindow());
+            Model.getInstance().getViewFactory().showHomePage();
+
+
     }
+    /*
+    private Boolean islogin(){
+        Dietician dietician = new Dietician(tfEmail.getText().trim().toString());
+        return crudFirebase.loginDietician(dietician);
+    }
+    */
 }
 
 

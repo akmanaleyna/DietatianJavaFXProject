@@ -3,9 +3,13 @@ module com.example.dietatianjavafx {
     requires javafx.fxml;
     requires AnimateFX;
     requires com.google.auth.oauth2;
-    requires com.google.auth;
     requires google.cloud.firestore;
+    requires google.cloud.core;
     requires firebase.admin;
+    requires com.google.auth;
+    requires com.google.api.apicommon;
+    requires org.slf4j;
+
 
     opens com.example.dietatianjavafx to javafx.fxml;
     opens com.example.dietatianjavafx.Controllers to javafx.fxml;

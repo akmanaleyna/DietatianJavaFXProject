@@ -177,7 +177,7 @@
                         </TextArea>
                      </children>
                   </HBox>
-                  <Button fx:id="btnKaydet" alignment="CENTER" mnemonicParsing="false" styleClass="button1" stylesheets="@../Styles/login.css" text="Kaydet">
+                  <Button fx:id="btnKaydet" alignment="CENTER" mnemonicParsing="false" onAction="#addDanisan" styleClass="button1" stylesheets="@../Styles/login.css" text="Kaydet">
                      <font>
                         <Font size="22.0" />
                      </font>

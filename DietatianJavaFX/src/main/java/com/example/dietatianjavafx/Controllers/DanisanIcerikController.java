@@ -1,6 +1,6 @@
 package com.example.dietatianjavafx.Controllers;
 
-import com.example.dietatianjavafx.Models.Danisan;
+import com.example.dietatianjavafx.Models.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
