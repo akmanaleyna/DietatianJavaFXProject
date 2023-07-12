@@ -2,6 +2,7 @@ package com.example.dietatianjavafx.Controllers;
 
 import com.example.dietatianjavafx.Models.CRUDFirebase;
 import com.example.dietatianjavafx.Models.Danisan;
+import com.example.dietatianjavafx.Models.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -48,7 +49,7 @@ public class YeniDanisanEkleController {
     @FXML
     private TextArea textareaNot;
 
-    private CRUDFirebase crudFirebase = new CRUDFirebase();
+
 
     @FXML
     void addDanisan(ActionEvent event){
@@ -75,7 +76,8 @@ public class YeniDanisanEkleController {
         else
             selectedCinsiyet = "Kadın";
         Danisan danisan = new Danisan(lblAdi.getText().trim().toString(), lblHedefKilo.getText().trim().toString(), lblYas.getText().trim().toString(), lblEmail.getText().trim().toString(), lblSifre.getText().trim().toString(), selectedCinsiyet, lblBoy.getText().trim().toString(), lblKilo.getText().trim().toString(), textareaNot.getText().trim().toString(), textAreaHastalik.getText().trim().toString());
-        if(crudFirebase.addDanisan(danisan)) System.out.println("Kayıt Başarılı");
+        if(Model.getInstance().addDanisan(danisan)) System.out.println("Kayıt Başarılı");
+        Model.getInstance().updateListDanisan();
     }
 
 }

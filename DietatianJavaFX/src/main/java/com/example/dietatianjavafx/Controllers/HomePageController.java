@@ -1,21 +1,32 @@
 package com.example.dietatianjavafx.Controllers;
 
 import com.example.dietatianjavafx.Models.CRUDFirebase;
+import com.example.dietatianjavafx.Models.DateRandevu;
+import com.example.dietatianjavafx.Models.Model;
+import com.example.dietatianjavafx.Views.HomepageRandevuFactory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class HomePageController implements Initializable {
 
 
     @FXML
+    private ListView<DateRandevu> listviewRandevu;
+
+    @FXML
     private Button btnEkle;
+
+    @FXML
+    private Button buttonAyrinti;
 
     @FXML
     private Label lblMotivasyon;
@@ -32,5 +43,15 @@ public class HomePageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblMotivasyon.setText("Günün Sözü: " + String.valueOf(crudFirebase.readMotivasyon()));
+        listviewRandevu.setItems(Model.getInstance().getListDateRandevu());
+        listviewRandevu.setCellFactory(param -> new HomepageRandevuFactory());
+        LocalDate today = LocalDate.now();
+        int month = today.getMonthValue();
+        int dayOfMonth = today.getDayOfMonth();
+        Model.getInstance().updateListRandevuByDay(String.valueOf(dayOfMonth),String.valueOf(month));
+    }
+    @FXML
+    void click(ActionEvent event) {
+        Model.getInstance().getViewFactory().showDiyetAyrinti();
     }
 }

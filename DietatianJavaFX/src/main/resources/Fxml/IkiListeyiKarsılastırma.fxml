@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="521.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.IkiListeyiKarsılastırmaController">
+   <children>
+      <HBox prefHeight="521.0" prefWidth="744.0">
+         <children>
+            <VBox prefHeight="522.0" prefWidth="681.0">
+               <children>
+                  <Label fx:id="lblAdSoyad" styleClass="label-text" stylesheets="@../Styles/login.css" text="Ece yavuz">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Diyetisyen">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ListView fx:id="ListviewDiyetisyen" prefHeight="505.0" prefWidth="378.0" />
+               </children>
+            </VBox>
+            <VBox prefHeight="522.0" prefWidth="670.0">
+               <children>
+                  <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Danışan">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="12.0" top="45.0" />
+                     </VBox.margin>
+                  </Label>
+                  <ListView prefHeight="504.0" prefWidth="366.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -126,6 +126,14 @@ public class ViewFactory {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/DiyetYazma.fxml"));
         createStage(loader);
     }
+    public void showTarifAyrinti(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/TarifAyrinti.fxml"));
+        createStage(loader);
+    }
+    public void showDiyetAyrinti(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/IkiListeyiKarsılastırma.fxml"));
+        createStage(loader);
+    }
     private void createStage(FXMLLoader loader){
         Scene scene = null;
         try{

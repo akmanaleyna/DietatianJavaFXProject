@@ -1,5 +1,12 @@
 package com.example.dietatianjavafx.Controllers;
 
+import com.example.dietatianjavafx.Models.CRUDFirebase;
+import com.example.dietatianjavafx.Models.Danisan;
+import com.example.dietatianjavafx.Models.Model;
+import com.example.dietatianjavafx.Models.Tarif;
+import com.example.dietatianjavafx.Views.DanisanFactory;
+import com.example.dietatianjavafx.Views.TarifFactory;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -25,13 +32,10 @@ public class SaglikliTarifler implements Initializable {
     private Button btnResimEkle;
 
     @FXML
-    private ListView<?> listViewSaglikliTarifler;
+    private ListView<Tarif> tarifListview;
 
     @FXML
     private TextField txtBaslik;
-
-    @FXML
-    private TextField txtTarifAra;
 
     @FXML
     private TextField txtKalori;
@@ -40,12 +44,36 @@ public class SaglikliTarifler implements Initializable {
     private TextField txtTarif;
 
     @FXML
+    private TextField txtTarifAra;
+
+    @FXML
     private ImageView ımgViewTarif;
+    private CRUDFirebase crudFirebase = new CRUDFirebase();
+   private Model model;
+
+   private static SaglikliTarifler instance;
+
+   public static SaglikliTarifler getInstance(){
+       if (instance == null){
+           instance = new SaglikliTarifler();
+       }
+       return instance;
+   }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        model = Model.getInstance();
+        tarifListview.setItems(model.getListTarif());
+        tarifListview.setCellFactory(param -> new TarifFactory());
         addListeners();
+        initAllTarifList();
     }
+     private void initAllTarifList(){
+       if(model.getListTarif().isEmpty() || model.getListTarif() == null){
+           model.readAllTarif();
+       }
+     }
+
     private void addListeners(){
         btnResimEkle.setOnAction(event -> selectedImage());
     }
@@ -57,7 +85,22 @@ public class SaglikliTarifler implements Initializable {
             ımgViewTarif.setImage(image);
             btnResimEkle.setText(selectedFile.toURI().toString());
         }
-
+    }
+    @FXML
+    void add(ActionEvent event) {
+        Tarif tarif = new Tarif(txtBaslik.getText().trim().toString(),TxtIcerik.getText().trim().toString(),txtTarif.getText().trim().toString(),txtKalori.getText().trim().toString(),"");
+        if (crudFirebase.addTarif(tarif)) {
+            System.out.println("Kayıt Başarılı!!!");
+            Model.getInstance().updateListTarif();
+            clear();
+        }
+    }
+    public void clear(){
+        txtBaslik.clear();
+        TxtIcerik.clear();
+        txtTarif.clear();
+        txtKalori.clear();
+        btnResimEkle.setText("");
     }
 
 }

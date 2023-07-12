@@ -50,7 +50,6 @@
                         <TextField fx:id="tfEmail" layoutX="39.0" layoutY="110.0" prefHeight="40.0" prefWidth="245.0" promptText="Email" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                         <PasswordField fx:id="tfPassword" layoutX="39.0" layoutY="186.0" prefHeight="40.0" prefWidth="245.0" promptText="Password" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
                         <Button fx:id="btnSingIn" layoutX="167.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="40.0" prefWidth="114.0" styleClass="button1" stylesheets="@../Styles/login.css" text="Giriş" />
-                        <Button fx:id="btmParola" layoutX="39.0" layoutY="282.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #fff; -fx-border-color: #fff;" text="Parolamı Unuttum" />
                      </children>
                   </Pane>
                </children>

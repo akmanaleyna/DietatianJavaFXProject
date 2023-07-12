@@ -2,9 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -35,152 +36,18 @@
                                     <Insets right="15.0" />
                                  </HBox.margin>
                               </Label>
-                              <DatePicker fx:id="datePTarih" styleClass="label-text" stylesheets="@../Styles/login.css" />
+                              <DatePicker fx:id="datePTarih" onAction="#changeDatePicker" styleClass="label-text" stylesheets="@../Styles/login.css" />
+                              <Button fx:id="btnYenile" mnemonicParsing="false" onAction="#yenile" prefHeight="26.0" prefWidth="55.0" style="-fx-background-color: #ECECEC;" styleClass="button1" stylesheets="@../Styles/login.css" text="Yenile">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Button>
                            </children>
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin>
                         </HBox>
-                        <AnchorPane prefHeight="62.0" prefWidth="670.0" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #ECECEC;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label fx:id="lblAdSoyad11" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Aleyna Akman">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="15.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lblGuncelKilo11" alignment="CENTER" prefHeight="36.0" prefWidth="214.0" text="10:00">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Button fx:id="btnIncele11" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" style="-fx-background-color: #FEA1A1;" styleClass="button_danisan" stylesheets="@../Styles/login.css" text="Sil">
-                                       <HBox.margin>
-                                          <Insets left="20.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-                           </VBox.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="62.0" prefWidth="670.0" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #ECECEC;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label fx:id="lblAdSoyad1" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Gülay Ardalı">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="15.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lblGuncelKilo1" alignment="CENTER" prefHeight="36.0" prefWidth="214.0" text="12:00">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Button fx:id="btnIncele1" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" style="-fx-background-color: #FEA1A1;" styleClass="button_danisan" stylesheets="@../Styles/login.css" text="Sil">
-                                       <HBox.margin>
-                                          <Insets left="20.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-                           </VBox.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="62.0" prefWidth="670.0" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #ECECEC;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label fx:id="lblAdSoyad" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Ecem Uzun">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="15.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lblGuncelKilo" alignment="CENTER" prefHeight="36.0" prefWidth="214.0" text="13:00">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Button fx:id="btnIncele" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" style="-fx-background-color: #FEA1A1;" styleClass="button_danisan" stylesheets="@../Styles/login.css" text="Sil">
-                                       <HBox.margin>
-                                          <Insets left="20.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-                           </VBox.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="62.0" prefWidth="670.0" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #ECECEC;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label fx:id="lblAdSoyad12" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Gülten Altıntaş">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="15.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lblGuncelKilo12" alignment="CENTER" prefHeight="36.0" prefWidth="214.0" text="14:00">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Button fx:id="btnIncele12" mnemonicParsing="false" prefHeight="37.0" prefWidth="79.0" style="-fx-background-color: #FEA1A1;" styleClass="button_danisan" stylesheets="@../Styles/login.css" text="Sil">
-                                       <HBox.margin>
-                                          <Insets left="20.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-                           </VBox.margin>
-                        </AnchorPane>
+                        <ListView fx:id="ListviewRandevu" prefHeight="242.0" prefWidth="670.0" style="-fx-background-color: transparent;" />
                      </children>
                   </VBox>
                </children>
@@ -223,32 +90,24 @@
                               <Insets right="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField fx:id="txtFieldAd" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </TextField>
-                        <TextField fx:id="txtFieldTarih" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </TextField>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                            <center>
-                              <Button fx:id="btnDüzenle" mnemonicParsing="false" styleClass="button1" stylesheets="@../Styles/login.css" text="Düzenle" BorderPane.alignment="CENTER">
+                              <Button fx:id="btnEkle" mnemonicParsing="false" onAction="#ekle" styleClass="button1" stylesheets="@../Styles/login.css" text="Ekle" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
                            </center>
                         </BorderPane>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <center>
-                              <Button fx:id="btnEkle" mnemonicParsing="false" styleClass="button1" stylesheets="@../Styles/login.css" text="Ekle" BorderPane.alignment="CENTER">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
+                              <DatePicker fx:id="randevuAyarla" onAction="#datePickerRandevuEkle" prefHeight="26.0" prefWidth="205.0" BorderPane.alignment="CENTER" />
+                           </center>
+                        </BorderPane>
+                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <center>
+                              <ChoiceBox fx:id="danisanAdi" prefHeight="26.0" prefWidth="205.0" BorderPane.alignment="CENTER" />
                            </center>
                         </BorderPane>
                      </children>

@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -17,7 +18,7 @@
    <children>
       <VBox prefHeight="500.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Hoşgeldin Şükran">
+            <Label styleClass="label-text" stylesheets="@../Styles/login.css" text="Hoşgeldiniz...">
                <VBox.margin>
                   <Insets bottom="5.0" left="20.0" top="20.0" />
                </VBox.margin>
@@ -40,87 +41,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <AnchorPane prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label fx:id="lblAdSoyad" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Aleyna Akman">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="15.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lblGuncelKilo" alignment="CENTER" prefHeight="36.0" prefWidth="214.0" text="10:00">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
-                           </VBox.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label fx:id="lblAdSoyad1" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Zekiye Kocaağa">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="15.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lblGuncelKilo1" alignment="CENTER" prefHeight="36.0" prefWidth="214.0" text="11:00">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
-                           </VBox.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label fx:id="lblAdSoyad11" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Şefika Altıntaş">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="15.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lblGuncelKilo11" alignment="CENTER" prefHeight="36.0" prefWidth="214.0" text="12:00">
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="15.0" right="15.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
-                           </VBox.margin>
-                        </AnchorPane>
+                        <ListView fx:id="listviewRandevu" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </VBox>
                   <VBox prefHeight="280.0" prefWidth="323.0" stylesheets="@../Styles/login.css">
@@ -144,7 +65,7 @@
                            <children>
                               <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label fx:id="lblAdSoyad2" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Aleyna Akman">
+                                    <Label fx:id="lblAdSoyad2" alignment="CENTER" prefHeight="36.0" prefWidth="206.0" text="Aleyna Akman">
                                        <HBox.margin>
                                           <Insets left="20.0" right="15.0" />
                                        </HBox.margin>
@@ -152,25 +73,7 @@
                                           <Font size="16.0" />
                                        </font>
                                     </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <VBox.margin>
-                              <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
-                           </VBox.margin>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
-                           <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="250.0" style="-fx-background-color: #fff;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label fx:id="lblAdSoyad21" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Şefika Altıntaş">
-                                       <HBox.margin>
-                                          <Insets left="20.0" right="15.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="16.0" />
-                                       </font>
-                                    </Label>
+                                    <Button fx:id="buttonAyrinti" mnemonicParsing="false" onAction="#click" styleClass="button1" stylesheets="@../Styles/login.css" text="!" />
                                  </children>
                               </HBox>
                            </children>

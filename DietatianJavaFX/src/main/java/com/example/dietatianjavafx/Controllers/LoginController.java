@@ -18,14 +18,12 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 
 public class LoginController implements Initializable {
 
     @FXML
     private Button bntBack;
-
-    @FXML
-    private Button btmParola;
 
     @FXML
     private Button btnNewPassword;
@@ -51,22 +49,12 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField tfPassword;
 
-    //private final CRUDFirebase crudFirebase = new CRUDFirebase();
+    private final CRUDFirebase crudFirebase = new CRUDFirebase();
 
 
     @FXML
     void handleButtonAction(ActionEvent event) {
-        if(event.getSource().equals(btnSingIn)){
 
-        }
-        if(event.getSource().equals(bntBack)){
-            new FadeIn(pnlSingUp).play();
-            pnlSingUp.toFront();
-        }
-        if(event.getSource().equals(btmParola)){
-            new FadeIn(pnlForgotPassworld).play();
-            pnlForgotPassworld.toFront();
-        }
     }
 
     @Override
@@ -75,14 +63,14 @@ public class LoginController implements Initializable {
     }
     private void onLogin(){
         //if(islogin())
-            Model.getInstance().getViewFactory().closeStage((Stage) btmParola.getScene().getWindow());
+            Model.getInstance().getViewFactory().closeStage((Stage) btnSingIn.getScene().getWindow());
             Model.getInstance().getViewFactory().showHomePage();
 
 
     }
     /*
     private Boolean islogin(){
-        Dietician dietician = new Dietician(tfEmail.getText().trim().toString());
+        Dietician dietician = new Dietician("","",tfEmail.getText().trim().toString());
         return crudFirebase.loginDietician(dietician);
     }
     */

@@ -7,30 +7,35 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="71.0" prefWidth="600.0" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.DanisanIcerikController">
+<AnchorPane prefHeight="71.0" prefWidth="600.0" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #ECECEC;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="600.0" style="-fx-background-color: #E3D4FF;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="lblAdSoyad" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Aleyna Akman">
+            <Label fx:id="lblAdiSoyadi" alignment="CENTER" prefHeight="36.0" prefWidth="235.0" text="Aleyna Akman">
                <HBox.margin>
-                  <Insets left="20.0" right="15.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
                <font>
-                  <Font size="25.0" />
+                  <Font size="23.0" />
                </font>
             </Label>
             <Label fx:id="lblGuncelKilo" alignment="CENTER" prefHeight="36.0" prefWidth="214.0" text="Güncel Kilo : 86">
                <font>
-                  <Font size="25.0" />
+                  <Font size="23.0" />
                </font>
                <HBox.margin>
-                  <Insets left="15.0" right="15.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
             </Label>
-            <Button fx:id="btnIncele" mnemonicParsing="false" styleClass="button_danisan" stylesheets="@../Styles/login.css" text="İncele">
+            <Button fx:id="btnIncele" mnemonicParsing="false" onAction="#add" styleClass="button_danisan" stylesheets="@../Styles/login.css" text="İncele">
                <HBox.margin>
-                  <Insets left="20.0" />
+                  <Insets right="10.0" />
                </HBox.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: #ED1C24;" styleClass="button_danisan" stylesheets="@../Styles/login.css" text="X">
                <font>
                   <Font size="16.0" />
                </font>

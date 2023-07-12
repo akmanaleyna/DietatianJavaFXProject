@@ -1,3 +1,5 @@
+
+//Danisan.java
 package com.example.dietatianjavafx.Models;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -26,7 +28,6 @@ public class Danisan {
         this.hastaliklar = new SimpleStringProperty(hastaliklar);
         this.kilo = new SimpleStringProperty(kilo);
         this.sifre = new SimpleStringProperty(sifre);
-        StringProperty sifre1 = new SimpleStringProperty(sifre);
     }
 
     public String getSifre() {
@@ -147,5 +148,10 @@ public class Danisan {
 
     public void setHastaliklar(String hastaliklar) {
         this.hastaliklar.set(hastaliklar);
+    }
+
+    @Override
+    public String toString() {
+        return adiSoyadi.get(); // ChoiceBox'ta danışanın adının gösterilmesi için adiSoyadi özelliğini döndürün
     }
 }

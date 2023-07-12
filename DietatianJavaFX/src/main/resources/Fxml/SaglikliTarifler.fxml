@@ -4,6 +4,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -38,62 +39,7 @@
                   <Insets left="15.0" right="15.0" />
                </VBox.margin>
                <children>
-                  <AnchorPane prefHeight="70.0" prefWidth="50.0" style="-fx-background-color: #fff;" styleClass="pane_container" stylesheets="@../Styles/login.css">
-                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="204.0" prefWidth="150.0" styleClass="pane_container" stylesheets="@../Styles/login.css">
-                           <children>
-                              <ImageView fx:id="imageViewTarif" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </VBox.margin>
-                                 <image>
-                                    <Image url="@../Images/5935864211620386563-128.png" />
-                                 </image>
-                              </ImageView>
-                              <Label fx:id="lblTarifBaslik" prefHeight="26.0" prefWidth="144.0" text="Pırasalı Bulgur Pilavı" textOverrun="CLIP">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" top="20.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label fx:id="lblTarifIcerik" text="Pırasa &amp; Bulgur" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="70.0" prefWidth="50.0" style="-fx-background-color: #fff;" styleClass="pane_container" stylesheets="@../Styles/login.css">
-                     <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="204.0" prefWidth="150.0" styleClass="pane_container" stylesheets="@../Styles/login.css">
-                           <children>
-                              <ImageView fx:id="imageViewTarif1" fitHeight="70.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
-                                 <VBox.margin>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </VBox.margin>
-                                 <image>
-                                    <Image url="@../Images/5935864211620386563-128.png" />
-                                 </image>
-                              </ImageView>
-                              <Label fx:id="lblTarifBaslik1" prefHeight="26.0" prefWidth="144.0" text="Pırasalı Bulgur Pilavı" textOverrun="CLIP">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" top="20.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <Label fx:id="lblTarifIcerik1" text="Pırasa &amp; Bulgur" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <HBox.margin>
-                        <Insets bottom="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </AnchorPane>
+                  <ListView fx:id="tarifListview" prefHeight="232.0" prefWidth="664.0" />
                </children>
             </HBox>
             <AnchorPane prefHeight="158.0" prefWidth="600.0" style="-fx-background-radius: 20; -fx-background-color: #F0EEF4;">
@@ -174,7 +120,7 @@
                         </GridPane>
                         <BorderPane prefHeight="174.0" prefWidth="228.0">
                            <bottom>
-                              <Button fx:id="btnEkle" alignment="CENTER_RIGHT" mnemonicParsing="false" styleClass="button1" stylesheets="@../Styles/login.css" text="Ekle" BorderPane.alignment="CENTER">
+                              <Button fx:id="btnEkle" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#add" styleClass="button1" stylesheets="@../Styles/login.css" text="Ekle" BorderPane.alignment="CENTER">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

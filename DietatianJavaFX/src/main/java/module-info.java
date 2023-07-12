@@ -9,6 +9,8 @@ module com.example.dietatianjavafx {
     requires com.google.auth;
     requires com.google.api.apicommon;
     requires org.slf4j;
+    requires google.cloud.storage;
+    requires javafx.base;
 
 
     opens com.example.dietatianjavafx to javafx.fxml;
