@@ -85,10 +85,9 @@ public class RandevularımController implements Initializable {
 
     @FXML
     void yenile(ActionEvent event) {
+        datePTarih.setValue(null);
         Model.getInstance().updateListRandevuFromToday();
         ListviewRandevu.refresh();
-        datePTarih.setValue(null);
-
     }
 
     @FXML

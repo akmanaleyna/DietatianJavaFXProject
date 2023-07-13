@@ -62,18 +62,17 @@ public class LoginController implements Initializable {
         btnSingIn.setOnAction(event -> onLogin());
     }
     private void onLogin(){
-        //if(islogin())
+        if(islogin()){
             Model.getInstance().getViewFactory().closeStage((Stage) btnSingIn.getScene().getWindow());
             Model.getInstance().getViewFactory().showHomePage();
-
-
+        }
     }
-    /*
+
     private Boolean islogin(){
-        Dietician dietician = new Dietician("","",tfEmail.getText().trim().toString());
+        Dietician dietician = new Dietician("",tfPassword.getText().trim().toString(),tfEmail.getText().trim().toString());
         return crudFirebase.loginDietician(dietician);
     }
-    */
+
 }
 
 

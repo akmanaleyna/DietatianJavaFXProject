@@ -3,18 +3,18 @@ package com.example.dietatianjavafx.Models;
 import com.google.cloud.firestore.*;
 import com.google.api.core.ApiFuture;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseToken;
 import com.google.firebase.auth.UserRecord;
 import com.google.firebase.cloud.FirestoreClient;
+import com.google.firebase.database.GenericTypeIndicator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import java.util.Calendar;
-import java.util.Date;
+import javafx.fxml.FXML;
 
 import java.util.*;
 import java.util.concurrent.ExecutionException;
 
-//package com.example.dietatianjavafx.Models;
 public class CRUDFirebase {
 
     private Firestore db;
@@ -837,34 +837,36 @@ public class CRUDFirebase {
             }
         }
 
+*/
+    public Boolean loginDietician(Dietician dietician) {
+        key = false;
 
-        public Boolean loginDietician(Dietician dietician)  {
-            key = false;
 
+        UserRecord userRecord = null;
+        try {
 
-            UserRecord userRecord = null;
-            try {
-
-                userRecord = FirebaseAuth.getInstance().getUserByEmail(dietician.getEmail().toString());
-                // See the UserRecord reference doc for the contents of userRecord.
-                 DocumentReference docRef = db.collection("dietician").document(userRecord.getUid());
-                 ApiFuture<DocumentSnapshot> future = docRef.get();
-                 DocumentSnapshot document = future.get();
-                if (document.exists()) {
-                    String email = document.getString("email");
-                    if (email != null && email.equals(dietician.getSifre())) {
+            userRecord = FirebaseAuth.getInstance().getUserByEmail(dietician.getEmail().toString());
+            // See the UserRecord reference doc for the contents of userRecord.
+            DocumentReference docRef = db.collection("dietician").document(userRecord.getUid());
+            ApiFuture<DocumentSnapshot> future = docRef.get();
+            DocumentSnapshot document = future.get();
+            if (document.exists()) {
+                String email = document.getString("email");
+                String sifre = document.getString("sifre");
+                if (email != null && email.equals(userRecord.getEmail()) && email.equals(dietician.getEmail())) {
+                    if (sifre.equals(dietician.getSifre())) {
                         key = true;
                     }
                 }
-                System.out.println("Successfully fetched user data: " + userRecord.getUid() + " " + userRecord.getEmail());
-                FirebaseToken decodedToken = FirebaseAuth.getInstance().verifyIdToken(userRecord.getUid());
-            } catch (ExecutionException | InterruptedException | FirebaseAuthException e) {
-                e.printStackTrace();
             }
-
-            return key;
+            System.out.println("Successfully fetched user data: " + userRecord.getUid() + " " + userRecord.getEmail());
+        } catch (ExecutionException | InterruptedException | FirebaseAuthException e) {
+            e.printStackTrace();
         }
-    */
+
+        return key;
+    }
+
     public boolean printMapNamesInDocument(String documentId, ObservableList<String> mapname) {
         key = false;
         try {
@@ -1097,7 +1099,7 @@ public class CRUDFirebase {
         }
     }
 
-    public Boolean veriCekDiyetList1(ObservableList<String> list,String day,String uid) {
+    public Boolean veriCekDiyetList1(ObservableList<String> list, String day, String uid) {
         key = false;
         try {
             // Diyet listesi koleksiyonu referansı
@@ -1130,8 +1132,8 @@ public class CRUDFirebase {
                                         Map<String, Object> lunchMap = (Map<String, Object>) veri.get(key);
                                         if (lunchMap != null) {
                                             for (Map.Entry<String, Object> entry : lunchMap.entrySet()) {
-                                                list.add(hesaplaVeYazdir(String.valueOf(entry.getKey()),String.valueOf(entry.getValue())));
-                                                System.out.println(hesaplaVeYazdir(String.valueOf(entry.getKey()),String.valueOf(entry.getValue())));
+                                                list.add(hesaplaVeYazdir(String.valueOf(entry.getKey()), String.valueOf(entry.getValue())));
+                                                System.out.println(hesaplaVeYazdir(String.valueOf(entry.getKey()), String.valueOf(entry.getValue())));
                                                 this.key = true;
                                             }
                                         } else {
@@ -1172,8 +1174,9 @@ public class CRUDFirebase {
 
         return output;
     }
-    public String ogunAdi(String ogunAdi){
-        if(ogunAdi.equals("breakfast"))
+
+    public String ogunAdi(String ogunAdi) {
+        if (ogunAdi.equals("breakfast"))
             return "Kahvaltı";
         else if (ogunAdi.equals("snack"))
             return "Araöğün1";
@@ -1184,5 +1187,171 @@ public class CRUDFirebase {
         else if (ogunAdi.equals("dinner"))
             return "Akşam";
         return "Araöğün3";
+    }
+
+
+    public Boolean getAllChatNames(ObservableList<String> chatNames) {
+        key = false;
+        CollectionReference chatsCollection = db.collection("chats");
+
+        try {
+            QuerySnapshot querySnapshot = chatsCollection.get().get();
+            for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                if (document.exists()) {
+                    String chatName = document.getString("chatName");
+                    if (chatName != null) {
+                        chatNames.add(chatName);
+                        key = true;
+                    }
+                }
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return key;
+    }
+
+    public boolean readChatsByChatName(ObservableList<Chat> chats, String chatName) {
+        key = false;
+        try {
+            Firestore firestore = FirestoreClient.getFirestore();
+            CollectionReference chatsCollection = firestore.collection("chats");
+
+            // Sorguyu oluştur
+            Query query = chatsCollection.whereEqualTo("chatName", chatName);
+
+            // Sorguyu çalıştır
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+
+            // Belge snapshot'larını al
+            QuerySnapshot snapshot = querySnapshot.get();
+
+
+            // Her belge için döngü
+            for (QueryDocumentSnapshot document : snapshot) {
+                CollectionReference messagesCollection = document.getReference().collection("messages");
+                ApiFuture<QuerySnapshot> messagesQuerySnapshot = messagesCollection.get();
+                QuerySnapshot messagesSnapshot = messagesQuerySnapshot.get();
+
+                // Her mesaj için döngü
+                for (QueryDocumentSnapshot messageDocument : messagesSnapshot) {
+                    String message = messageDocument.get("message").toString();
+                    String time = messageDocument.get("time").toString();
+                    String sender = messageDocument.get("sender").toString();
+
+                    Chat chat = new Chat(message, sender, time);
+                    chats.add(chat);
+                    key = true;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        return key;
+    }
+
+    public void sendChatMessage(String chatName, Chat chat) {
+        try {
+            CollectionReference chatsCollection = db.collection("chats");
+
+            // Sorguyu oluştur
+            Query query = chatsCollection.whereEqualTo("chatName", chatName);
+
+            // Sorguyu çalıştır
+            ApiFuture<QuerySnapshot> querySnapshot = query.get();
+
+            // Belge snapshot'larını al
+            QuerySnapshot snapshot = querySnapshot.get();
+
+            // Her belge için döngü
+            for (QueryDocumentSnapshot document : snapshot) {
+                CollectionReference messagesCollection = document.getReference().collection("messages");
+
+                DocumentReference messageDocumentRef = messagesCollection.document(); // Random belge oluştur
+
+                Map<String, Object> docChat = new HashMap<>();
+                docChat.put("message", chat.getMessage());
+                docChat.put("sender", chat.getSender());
+                docChat.put("time", chat.getTime());
+
+                messageDocumentRef.set(docChat); // Alanları belgeye ekle
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Boolean getEatenNames(String day, ObservableList<String> eatenNames) {
+
+        key = false;
+        try {
+            CollectionReference eatenCollection = db.collection("eaten");
+
+            QuerySnapshot eatenSnapshot = eatenCollection.get().get();
+            List<QueryDocumentSnapshot> eatenDocuments = eatenSnapshot.getDocuments();
+
+            for (QueryDocumentSnapshot eatenDocument : eatenDocuments) {
+                CollectionReference eatensCollection = eatenDocument.getReference().collection("eatens");
+                Query eatensQuery = eatensCollection.whereEqualTo("day", day);
+
+                ApiFuture<QuerySnapshot> eatensSnapshotFuture = eatensQuery.get();
+                QuerySnapshot eatensSnapshot = eatensSnapshotFuture.get();
+                List<QueryDocumentSnapshot> eatensDocuments = eatensSnapshot.getDocuments();
+
+                for (QueryDocumentSnapshot eatensDocument : eatensDocuments) {
+                    String eatenName = eatensDocument.getString("sender");
+                    System.out.println(eatenName);
+                    eatenNames.add(eatenName);
+                    key = true;
+                }
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            // Handle the exception or log an error
+            e.printStackTrace();
+        }
+
+        return key;
+    }
+
+    //String day, List<String> eatenArray
+    public List<Eaten> getEatenData(List<Eaten> eatenArray) {
+        try {
+            CollectionReference eatenCollection = db.collection("eaten");
+            QuerySnapshot eatenSnapshot = eatenCollection.get().get();
+            List<QueryDocumentSnapshot> eatenDocuments = eatenSnapshot.getDocuments();
+
+            for (QueryDocumentSnapshot eatenDocument : eatenDocuments) {
+                CollectionReference eatensCollection = eatenDocument.getReference().collection("eatens");
+                Query eatensQuery = eatensCollection.whereEqualTo("day", "13").whereEqualTo("sender", "Ceylan Doğan");
+
+                ApiFuture<QuerySnapshot> eatensSnapshotFuture = eatensQuery.get();
+                QuerySnapshot eatensSnapshot = eatensSnapshotFuture.get();
+                List<QueryDocumentSnapshot> eatensDocuments = eatensSnapshot.getDocuments();
+
+                for (QueryDocumentSnapshot eatensDocument : eatensDocuments) {
+                    Eaten eaten = new Eaten(); // Yeni Eaten nesnesi oluştur
+
+                    for (String field : eatensDocument.getData().keySet()) {
+                        Object value = eatensDocument.get(field);
+                        if (field.equals("ogunTime"))
+                            eaten.setOguntime(String.valueOf(value));
+                        else if (field.equals("totalCalorie"))
+                            eaten.setCalories(String.valueOf(value));
+                        else if (field.equals("eaten"))
+                            eaten.setEaten(String.valueOf(value));
+                        System.out.println(field + ": " + value);
+                    }
+                    System.out.println("-----");
+
+                    eatenArray.add(eaten); // Yeni nesneyi eatenArray'e ekle
+                }
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return eatenArray;
     }
 }

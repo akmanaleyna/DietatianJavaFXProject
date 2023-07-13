@@ -5,8 +5,9 @@ import com.example.dietatianjavafx.Views.ViewFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class Model {
     private static Model model;
@@ -27,7 +28,15 @@ public class Model {
     private ObservableList<String> cumaDiyetList;
     private ObservableList<String> cumartesiDiyetList;
     private ObservableList<String> pazarDiyetList;
+
+    private ObservableList<String> chatNameList;
+
+    private ObservableList<Chat> chatList;
+
+    private ObservableList<String> diyetGonderenler;
     private Tarif tarif;
+
+    private String isim;
 
     private Danisan danisan;
 
@@ -47,6 +56,9 @@ public class Model {
         this.cumaDiyetList = FXCollections.observableArrayList();
         this.cumartesiDiyetList = FXCollections.observableArrayList();
         this.pazarDiyetList = FXCollections.observableArrayList();
+        this.chatNameList = FXCollections.observableArrayList();
+        this.chatList = FXCollections.observableArrayList();
+        this.diyetGonderenler = FXCollections.observableArrayList();
     }
 
     public static synchronized Model getInstance() {
@@ -147,7 +159,8 @@ public class Model {
     }
 
     public void updateListRandevuFromToday() {
-        updateListRandevu();
+        listRandevu.clear();
+        readAllRandevu();
         ObservableList<DateRandevu> filteredList = FXCollections.observableArrayList();
         for (DateRandevu dateRandevu : listRandevu) {
             // Şu anki tarihi al
@@ -326,5 +339,71 @@ public class Model {
                 return false;
         }
     }
+
+    public ObservableList<String> getChatNames() {
+        return chatNameList;
+    }
+
+    public boolean readAllChatNames() {
+        return crudFirebase.getAllChatNames(chatNameList);
+    }
+
+    public void updateChatNames() {
+        chatNameList.clear();
+        readAllChatNames();
+    }
+
+    public ObservableList<Chat> getChatList() {
+        ObservableList<Chat> chatList = FXCollections.observableArrayList(this.chatList);
+
+        chatList.sort(Comparator.comparing(Chat::getTime));
+
+        return chatList;
+    }
+
+    public boolean readAllChatList(String chatName) {
+        return crudFirebase.readChatsByChatName(chatList,chatName);
+    }
+
+    public void updateChatList(String chatName) {
+        chatList.clear();
+        readAllChatList(chatName);
+    }
+
+    public void sendChatMessage(String chatName, Chat chat){
+        crudFirebase.sendChatMessage(chatName,chat);
+    }
+
+    //diyetGonderenler
+
+
+    public ObservableList<String> getListDiyetGonderenler() {
+        return diyetGonderenler;
+    }
+
+    public boolean readDiyetGonderenler() {return crudFirebase.getEatenNames(getTodayDay(),diyetGonderenler);}
+
+    public void updateDiyetGonderenler() {
+        diyetGonderenler.clear();
+        if (readDiyetGonderenler()) {
+            Set<String> uniqueNames = new HashSet<>(diyetGonderenler);
+            diyetGonderenler.setAll(uniqueNames);
+        }
+    }
+     private String getTodayDay() {
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd");
+        String day = now.format(formatter);
+
+        if (day.length() == 1) {
+            day = "0" + day;
+        }
+        System.out.println("Gün:" + day);
+        return day;
+    }
+    public void setIsim(String isim){this.isim = isim; }
+
+    public String getIsim(){return isim;}
+
 
 }

@@ -1,6 +1,10 @@
 package com.example.dietatianjavafx.Controllers;
 
+import com.example.dietatianjavafx.Models.CRUDFirebase;
+import com.example.dietatianjavafx.Models.Eaten;
 import com.example.dietatianjavafx.Models.Model;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -9,6 +13,8 @@ import javafx.scene.control.ListView;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class IkiListeyiKarsılastırmaController implements Initializable {
@@ -17,10 +23,34 @@ public class IkiListeyiKarsılastırmaController implements Initializable {
     private ListView<String> ListviewDiyetisyen;
     @FXML
     private Label lblAdSoyad;
+    @FXML
+    private ListView<String> listviewDanisan;
+     ObservableList<String> yeni = FXCollections.observableArrayList();
+    private CRUDFirebase crudFirebase= new CRUDFirebase();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        String  allItemText = "diyetList";
+        List<Eaten> eatenList = crudFirebase.getEatenData(new ArrayList<>());
+
+        if (!eatenList.isEmpty()) {
+            // Eaten nesnelerini ListView'a ekleyerek yazdırma
+            ObservableList<String> items = FXCollections.observableArrayList();
+            for (Eaten eatens : eatenList) {
+                yeni.add(eatens.getOguntime());
+                yeni.add(eatens.getEaten());
+                yeni.add(eatens.getCalories());
+            }
+            yeni.add(" ");
+        } else {
+            System.out.println("Failed to retrieve Eaten Data.");
+        }
+        listviewDanisan.setItems(yeni);
+
         LocalDate today = LocalDate.now();
+
+        lblAdSoyad.setText(Model.getInstance().getIsim());
 
         // Gün ismini almak
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE");
@@ -43,7 +73,6 @@ public class IkiListeyiKarsılastırmaController implements Initializable {
 
 
     }
-
     public String gunAdi(String gun){
         if(gun.equals("Pazartesi"))
             return "Pazartesi";

@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="521.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.dietatianjavafx.Controllers.IkiListeyiKarsılastırmaController">
    <children>
       <HBox prefHeight="521.0" prefWidth="744.0">
@@ -44,7 +43,7 @@
                         <Insets bottom="12.0" top="45.0" />
                      </VBox.margin>
                   </Label>
-                  <ListView prefHeight="504.0" prefWidth="366.0" />
+                  <ListView fx:id="listviewDanisan" prefHeight="504.0" prefWidth="366.0" />
                </children>
             </VBox>
          </children>
