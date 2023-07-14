@@ -59,6 +59,8 @@ public class ChatController implements Initializable {
             Model.getInstance().updateChatList(selectedText);
             listviewChat.setItems(Model.getInstance().getChatList());
             listviewChat.refresh();
+            Model.getInstance().updateChatNames();
+            listviewIsim.refresh();
         }
     private CRUDFirebase crudFirebase = new CRUDFirebase();
     @Override

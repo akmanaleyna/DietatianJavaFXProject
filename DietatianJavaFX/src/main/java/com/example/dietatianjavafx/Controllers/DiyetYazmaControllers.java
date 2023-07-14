@@ -213,7 +213,6 @@ public class DiyetYazmaControllers implements Initializable {
     public void clear(){
         kalori = 0;
         lblToplamKalori.setText(String.valueOf(kalori));
-        ComboKategori.setValue(null);
 
         String[][] dizi = convertToTwoDimensionalArray(listekle);
 

@@ -30,23 +30,8 @@ public class IkiListeyiKarsılastırmaController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        String  allItemText = "diyetList";
-        List<Eaten> eatenList = crudFirebase.getEatenData(new ArrayList<>());
-
-        if (!eatenList.isEmpty()) {
-            // Eaten nesnelerini ListView'a ekleyerek yazdırma
-            ObservableList<String> items = FXCollections.observableArrayList();
-            for (Eaten eatens : eatenList) {
-                yeni.add(eatens.getOguntime());
-                yeni.add(eatens.getEaten());
-                yeni.add(eatens.getCalories());
-            }
-            yeni.add(" ");
-        } else {
-            System.out.println("Failed to retrieve Eaten Data.");
-        }
-        listviewDanisan.setItems(yeni);
+        Model.getInstance().updateEatenData();
+        listviewDanisan.setItems(Model.getInstance().getEatenData());
 
         LocalDate today = LocalDate.now();
 

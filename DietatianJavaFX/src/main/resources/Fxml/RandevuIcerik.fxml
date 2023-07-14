@@ -11,15 +11,20 @@
    <children>
       <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="628.0" style="-fx-background-color: #ECECEC;" styleClass="danisan_icerik" stylesheets="@../Styles/login.css">
          <children>
-            <Label fx:id="lblAdSoyad" alignment="CENTER" prefHeight="36.0" prefWidth="196.0" text="Adi">
+            <Label fx:id="lblAdSoyad" alignment="CENTER" prefHeight="36.0" prefWidth="155.0" text="Adi">
                <HBox.margin>
-                  <Insets left="20.0" right="15.0" />
+                  <Insets left="10.0" right="15.0" />
                </HBox.margin>
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="lblRandevu" alignment="CENTER" prefHeight="36.0" prefWidth="215.0" text="Randevu Tarihi">
+            <Label fx:id="lblRandevu" alignment="CENTER" prefHeight="36.0" prefWidth="176.0" text="Randevu Tarihi">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblSaat" alignment="CENTER" prefHeight="36.0" prefWidth="155.0" text="Saat">
                <font>
                   <Font size="18.0" />
                </font>
@@ -28,10 +33,13 @@
                <font>
                   <Font size="16.0" />
                </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
             </Button>
             <Button fx:id="btnSil" mnemonicParsing="false" onAction="#delete" prefHeight="38.0" prefWidth="56.0" style="-fx-background-color: #FEA1A1;" styleClass="button_danisan" stylesheets="@../Styles/login.css" text="X">
                <HBox.margin>
-                  <Insets left="20.0" />
+                  <Insets left="10.0" right="10.0" />
                </HBox.margin>
                <font>
                   <Font size="16.0" />

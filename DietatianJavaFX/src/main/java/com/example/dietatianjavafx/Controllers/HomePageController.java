@@ -41,7 +41,10 @@ public class HomePageController implements Initializable {
 
     @FXML
     void add(ActionEvent event) {
-        if(crudFirebase.addMotivasyon(txtMotivasyon.getText().trim().toString())) System.out.println("Kayıt Başarılı");
+        if(crudFirebase.addMotivasyon(txtMotivasyon.getText().trim().toString())){
+            System.out.println("Kayıt Başarılı");
+            lblMotivasyon.setText("");
+        }
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

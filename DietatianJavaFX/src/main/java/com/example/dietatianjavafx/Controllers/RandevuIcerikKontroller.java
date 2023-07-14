@@ -27,6 +27,9 @@ public class RandevuIcerikKontroller implements Initializable {
     private Label lblAdSoyad;
 
     @FXML
+    private Label lblSaat;
+
+    @FXML
     private Label lblRandevu;
     private DateRandevu dateRandevu;
     public RandevuIcerikKontroller(DateRandevu dateRandevu) {
@@ -49,11 +52,12 @@ public class RandevuIcerikKontroller implements Initializable {
         if(dateRandevu.getIsConfirment().equals("true")) btnOnayla.setVisible(false);
         lblAdSoyad.setText(Model.getInstance().getNameUID(dateRandevu.getUid()));
         lblRandevu.textProperty().bind(Bindings.concat(dateRandevu.firstDayProperty(),new SimpleStringProperty("."),dateRandevu.firstMonthProperty(),new SimpleStringProperty("."),new SimpleStringProperty(String.valueOf(year))));
+        lblSaat.setText(dateRandevu.getConfirmedDate());
     }
     @FXML
     void delete(ActionEvent event) {
         //Model.getInstance().getDocumentIdbyFullName(lblAdSoyad.getText())
-        Model.getInstance().deleteRandevu(dateRandevu.getUid().toString(),dateRandevu.getFirstDay().toString(), dateRandevu.getFirstMonth()).toString();
+        Model.getInstance().deleteRandevu(dateRandevu.getUid().toString(),dateRandevu.getFirstDay().toString(), dateRandevu.getFirstMonth().toString(),dateRandevu.getConfirmedDate().toString());
         Model.getInstance().updateListRandevu();
     }
 

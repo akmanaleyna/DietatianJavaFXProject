@@ -6,6 +6,8 @@ import com.example.dietatianjavafx.Models.Model;
 import com.example.dietatianjavafx.Models.Tarif;
 import com.example.dietatianjavafx.Views.DanisanFactory;
 import com.example.dietatianjavafx.Views.TarifFactory;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -45,6 +47,12 @@ public class SaglikliTarifler implements Initializable {
 
     @FXML
     private TextField txtTarifAra;
+
+    @FXML
+    private Button btnAra;
+
+    @FXML
+    private Button btnYenile;
 
     @FXML
     private ImageView ımgViewTarif;
@@ -101,6 +109,31 @@ public class SaglikliTarifler implements Initializable {
         txtTarif.clear();
         txtKalori.clear();
         btnResimEkle.setText("");
+    }
+
+    @FXML
+    void ara(ActionEvent event) {
+        String arananTarifAdi = txtTarifAra.getText().trim();
+        if (!arananTarifAdi.isEmpty()) {
+            ObservableList<Tarif> filteredList = FXCollections.observableArrayList();
+            for (Tarif tarif : Model.getInstance().getListTarif()) {
+                if (tarif.getTarifAdi().equalsIgnoreCase(arananTarifAdi)) {
+                    filteredList.add(tarif);
+                }
+            }
+            tarifListview.setItems(filteredList);
+            tarifListview.refresh();
+        } else {
+            tarifListview.setItems(Model.getInstance().getListTarif());
+            tarifListview.refresh();
+        }
+    }
+
+    @FXML
+    void yenile(ActionEvent event) {
+        Model.getInstance().updateListTarif();
+        tarifListview.setItems(Model.getInstance().getListTarif());
+        tarifListview.refresh();
     }
 
 }

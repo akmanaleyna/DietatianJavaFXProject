@@ -18,11 +18,21 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
                <children>
-                  <TextField fx:id="txtDanisanAra" prefHeight="32.0" prefWidth="650.0" promptText="Danışan Ara" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css">
+                  <TextField fx:id="txtDanisanAra" prefHeight="32.0" prefWidth="498.0" promptText="Danışan Ara" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </TextField>
+                  <Button fx:id="btnAra" mnemonicParsing="false" onAction="#ara" prefHeight="42.0" prefWidth="51.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="ARA">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnYenile" mnemonicParsing="false" onAction="#yenile" prefHeight="42.0" prefWidth="66.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Yenile">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
                   <Button fx:id="btnDanisanEkle" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="+">
                      <font>
                         <Font name="System Bold" size="18.0" />

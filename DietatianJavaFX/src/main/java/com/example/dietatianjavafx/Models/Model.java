@@ -34,6 +34,8 @@ public class Model {
     private ObservableList<Chat> chatList;
 
     private ObservableList<String> diyetGonderenler;
+
+    private ObservableList<String> listEaten;
     private Tarif tarif;
 
     private String isim;
@@ -59,6 +61,7 @@ public class Model {
         this.chatNameList = FXCollections.observableArrayList();
         this.chatList = FXCollections.observableArrayList();
         this.diyetGonderenler = FXCollections.observableArrayList();
+        this.listEaten = FXCollections.observableArrayList();
     }
 
     public static synchronized Model getInstance() {
@@ -134,7 +137,18 @@ public class Model {
     public String getNameUID(String uid) {
         return crudFirebase.getFullNameByDocumentId(uid);
     }
+/*
 
+
+
+
+
+
+
+
+
+
+ */
     public ObservableList<DateRandevu> getListDateRandevu() {
         return listRandevu;
     }
@@ -145,6 +159,7 @@ public class Model {
         listRandevu.clear();
         crudFirebase.readAllDate(listRandevu);
     }
+
 
     public void updateListRandevuByDay(String day, String month) {
         updateListRandevu();
@@ -184,8 +199,8 @@ public class Model {
         return crudFirebase.updateDate(date);
     }
 
-    public Boolean deleteRandevu(String uid,String firstDay, String firstMonth){
-        return crudFirebase.deleteDate(uid,firstDay,firstMonth);
+    public Boolean deleteRandevu(String uid,String firstDay, String firstMonth,String confirmedDate){
+        return crudFirebase.deleteDate(uid,firstDay,firstMonth,confirmedDate);
     }
 
     public String getDocumentIdbyFullName(String fullName){
@@ -404,6 +419,17 @@ public class Model {
     public void setIsim(String isim){this.isim = isim; }
 
     public String getIsim(){return isim;}
+
+    public Boolean readEatenData(){
+        return crudFirebase.getEatenData(listEaten,getTodayDay(),getIsim());
+    }
+    public ObservableList<String>  getEatenData(){
+        return listEaten;
+    }
+    public void updateEatenData() {
+        listEaten.clear();
+        readEatenData();
+    }
 
 
 }

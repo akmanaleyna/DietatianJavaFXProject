@@ -285,7 +285,7 @@ public class CRUDFirebase {
         return key;
     }
 
-    public boolean deleteDate(String uid, String firstDay, String firstMonth) {
+    public boolean deleteDate(String uid, String firstDay, String firstMonth,String confirmedDate) {
         // Koleksiyon referansını alın
         CollectionReference dateCollectionRef = db.collection("date");
 
@@ -293,6 +293,7 @@ public class CRUDFirebase {
         ApiFuture<QuerySnapshot> future = dateCollectionRef.whereEqualTo("uid", uid)
                 .whereEqualTo("firstDay", firstDay)
                 .whereEqualTo("firstMonth", firstMonth)
+                .whereEqualTo("confirmedDate", confirmedDate)
                 .get();
         try {
             QuerySnapshot querySnapshot = future.get();
@@ -677,6 +678,7 @@ public class CRUDFirebase {
         docDietisyen = new HashMap<>();
         docDietisyen.put("adSoyad", dietician.getAdiSoyadi());
         docDietisyen.put("email", dietician.getEmail());
+        docDietisyen.put("sifre",dietician.getSifre());
         UserRecord.CreateRequest request = new UserRecord.CreateRequest()
                 .setEmail(dietician.getEmail())
                 .setPassword(dietician.getSifre()); // replace with actual password
@@ -1316,7 +1318,8 @@ public class CRUDFirebase {
     }
 
     //String day, List<String> eatenArray
-    public List<Eaten> getEatenData(List<Eaten> eatenArray) {
+    public Boolean getEatenData(ObservableList<String> listEaten,String day , String sender) {
+        key = false;
         try {
             CollectionReference eatenCollection = db.collection("eaten");
             QuerySnapshot eatenSnapshot = eatenCollection.get().get();
@@ -1324,7 +1327,7 @@ public class CRUDFirebase {
 
             for (QueryDocumentSnapshot eatenDocument : eatenDocuments) {
                 CollectionReference eatensCollection = eatenDocument.getReference().collection("eatens");
-                Query eatensQuery = eatensCollection.whereEqualTo("day", "13").whereEqualTo("sender", "Ceylan Doğan");
+                Query eatensQuery = eatensCollection.whereEqualTo("day", day).whereEqualTo("sender", sender);
 
                 ApiFuture<QuerySnapshot> eatensSnapshotFuture = eatensQuery.get();
                 QuerySnapshot eatensSnapshot = eatensSnapshotFuture.get();
@@ -1336,22 +1339,19 @@ public class CRUDFirebase {
                     for (String field : eatensDocument.getData().keySet()) {
                         Object value = eatensDocument.get(field);
                         if (field.equals("ogunTime"))
-                            eaten.setOguntime(String.valueOf(value));
-                        else if (field.equals("totalCalorie"))
-                            eaten.setCalories(String.valueOf(value));
+                            listEaten.add("<<< " + ogunAdi(String.valueOf(value)) +" >>>");
                         else if (field.equals("eaten"))
-                            eaten.setEaten(String.valueOf(value));
-                        System.out.println(field + ": " + value);
+                            listEaten.add(String.valueOf(value).substring(1, String.valueOf(value).length() - 1));
+                        else if (field.equals("totalCalorie"))
+                        listEaten.add("Kalori :" + String.valueOf(value));
                     }
-                    System.out.println("-----");
-
-                    eatenArray.add(eaten); // Yeni nesneyi eatenArray'e ekle
+                    key = true;
+                    listEaten.add(" ");
                 }
             }
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-
-        return eatenArray;
+        return key;
     }
 }
