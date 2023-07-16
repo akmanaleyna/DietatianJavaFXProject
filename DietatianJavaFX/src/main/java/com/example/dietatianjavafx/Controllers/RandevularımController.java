@@ -88,6 +88,7 @@ public class RandevularımController implements Initializable {
     @FXML
     void yenile(ActionEvent event) {
         datePTarih.setValue(null);
+        randevuAyarla.setValue(null);
         Model.getInstance().updateListRandevuFromToday();
         ListviewRandevu.refresh();
     }
@@ -114,7 +115,7 @@ public class RandevularımController implements Initializable {
         }else{
             int[] dateParams = new int[3];
             parseDate(String.valueOf(randevuAyarla.getValue()), dateParams);
-            DateRandevu dateRandevu = new DateRandevu(String.valueOf(dateParams[2]),String.valueOf(dateParams[1]),"true",Model.getInstance().getDocumentIdbyFullName(danisanAdi.getValue().getAdiSoyadi()),txtsaat.getText().toString(),"","Not assigned yet","","");
+            DateRandevu dateRandevu = new DateRandevu(String.valueOf(dateParams[2]),String.valueOf(dateParams[1]),"true",Model.getInstance().getDocumentIdbyFullName(danisanAdi.getValue().getAdiSoyadi()),txtsaat.getText().trim().toString(),"","Not assigned yet","","");
             if(Model.getInstance().addDateRandevu(dateRandevu)){
                 System.out.println("Kayıt Başarılı");
                 danisanAdi.setValue(null);

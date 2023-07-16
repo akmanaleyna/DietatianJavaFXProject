@@ -1,6 +1,5 @@
 package com.example.dietatianjavafx.Controllers;
 
-import com.example.dietatianjavafx.Models.CRUDFirebase;
 import com.example.dietatianjavafx.Models.Model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -97,10 +96,11 @@ public class DiyetYazmaControllers implements Initializable {
             "Araöğün3"
 
     );
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblAdSoyad.setText("Ad Soyad: " + Model.getInstance().getDanisan().getAdiSoyadi());
-        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0,10);
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 10);
         valueFactory.setValue(1);
         spinnerAdet.setValueFactory(valueFactory);
         comboGun.setItems(daysOfWeek);
@@ -128,28 +128,17 @@ public class DiyetYazmaControllers implements Initializable {
 
         Model.getInstance().updateListDanisan("Pazar", danisanId);
         listViewPazar.setItems(Model.getInstance().getPazarDiyetList());
-
     }
-
 
     @FXML
     void Ekle(ActionEvent event) {
-        /*if(comboGun.getValue() != null && ComboOgun.getValue() != null && ComboKategori.getValue() != null && ComboYiyecek.getValue() != null){
-            for(int i = 0 ; i < spinnerAdet.getValue(); i++) {
-                listekle.add(String.valueOf(ComboYiyecek.getValue() + " " + Model.getInstance().printFieldValueInMap(ComboYiyecek.getValue(), ComboKategori.getValue())));
-                kalori += Integer.parseInt(Model.getInstance().printFieldValueInMap(ComboYiyecek.getValue(), ComboKategori.getValue()));
-                lblToplamKalori.setText(String.valueOf(kalori));
-            }
-            listViewEkle.setItems(listekle);
-            listViewEkle.refresh();
-        }*/
         if (comboGun.getValue() != null && ComboOgun.getValue() != null && ComboKategori.getValue() != null && ComboYiyecek.getValue() != null) {
             for (int i = 0; i < spinnerAdet.getValue(); i++) {
                 String comboYiyecekValue = ComboYiyecek.getValue();
                 String comboKategoriValue = ComboKategori.getValue();
                 if (comboYiyecekValue != null && comboKategoriValue != null) {
                     // ComboYiyecek ve ComboKategori değerleri null değilse işlemleri gerçekleştir
-                    listekle.add(String.valueOf(comboYiyecekValue + " " + Model.getInstance().printFieldValueInMap(comboYiyecekValue, comboKategoriValue)));
+                    listekle.add(String.valueOf(comboYiyecekValue.trim() + " " + Model.getInstance().printFieldValueInMap(comboYiyecekValue, comboKategoriValue).trim()));
                     kalori += Integer.parseInt(Model.getInstance().printFieldValueInMap(comboYiyecekValue, comboKategoriValue));
                     lblToplamKalori.setText(String.valueOf(kalori));
                 }
@@ -161,36 +150,40 @@ public class DiyetYazmaControllers implements Initializable {
 
     @FXML
     void gonder(ActionEvent event) {
-        if(isBothChoiceBoxesSelected()){
+        if (isBothChoiceBoxesSelected()) {
             String[][] dizi = convertToTwoDimensionalArray(listekle);
-            Model.getInstance().veriEkleDocument(comboGun.getValue().toString(),Model.getInstance().getDocumentIdbyFullName(Model.getInstance().getDanisan().getAdiSoyadi()),dizi,String.valueOf(sonrakiGun(gunAdi())),ogunAdi());
-           System.out.println(comboGun.getValue().toString()+" "+Model.getInstance().getDocumentIdbyFullName(Model.getInstance().getDanisan().getAdiSoyadi())+" "+String.valueOf(sonrakiGun(gunAdi()))+" "+ogunAdi());
-            Model.getInstance().updateListDanisan(comboGun.getValue().toString(), Model.getInstance().getDocumentIdbyFullName(Model.getInstance().getDanisan().getAdiSoyadi()));
+            Model.getInstance().veriEkleDocument(comboGun.getValue(), Model.getInstance().getDocumentIdbyFullName(Model.getInstance().getDanisan().getAdiSoyadi()), dizi, String.valueOf(sonrakiGun(gunAdi())), ogunAdi());
+            System.out.println(comboGun.getValue() + " " + Model.getInstance().getDocumentIdbyFullName(Model.getInstance().getDanisan().getAdiSoyadi()) + " " + String.valueOf(sonrakiGun(gunAdi())) + " " + ogunAdi());
+            Model.getInstance().updateListDanisan(comboGun.getValue(), Model.getInstance().getDocumentIdbyFullName(Model.getInstance().getDanisan().getAdiSoyadi()));
             clearAll();
         }
-
     }
 
     @FXML
     void temizle(ActionEvent event) {
         clearAll();
     }
+
     @FXML
     void onComboOgunSelected(ActionEvent event) {
         clear();
         String selectedMeal = ComboOgun.getValue();
         System.out.println("Seçili Öğün: " + selectedMeal);
-        Model.getInstance().updateMapNames(ComboOgun.getValue());
-        ComboKategori.setItems(Model.getInstance().getMapname());
+        if (selectedMeal != null) {
+            Model.getInstance().updateMapNames(ComboOgun.getValue());
+            ComboKategori.setItems(Model.getInstance().getMapname());
+        }
     }
+
     @FXML
-    void onComboKategoriSelected(ActionEvent event){
+    void onComboKategoriSelected(ActionEvent event) {
         String selectedKategori = ComboKategori.getValue();
         System.out.println("Seçili Kategori: " + selectedKategori);
         Model.getInstance().updateFieldName(ComboKategori.getValue());
         ComboYiyecek.setItems(Model.getInstance().getfieldname());
     }
-    public void clearAll(){
+
+    public void clearAll() {
         kalori = 0;
         lblToplamKalori.setText(String.valueOf(kalori));
         comboGun.setValue(null);
@@ -210,7 +203,8 @@ public class DiyetYazmaControllers implements Initializable {
         listekle.clear();
         listViewEkle.refresh();
     }
-    public void clear(){
+
+    public void clear() {
         kalori = 0;
         lblToplamKalori.setText(String.valueOf(kalori));
 
@@ -226,6 +220,7 @@ public class DiyetYazmaControllers implements Initializable {
         listekle.clear();
         listViewEkle.refresh();
     }
+
     public static String[][] convertToTwoDimensionalArray(ObservableList<String> list) {
         Map<String, Integer> itemCounts = new HashMap<>();
 
@@ -249,6 +244,7 @@ public class DiyetYazmaControllers implements Initializable {
 
         return dizi;
     }
+
     public static int sonrakiGun(String gun) {
         LocalDate simdikiTarih = LocalDate.now();
         DayOfWeek simdikiGun = simdikiTarih.getDayOfWeek();
@@ -263,8 +259,8 @@ public class DiyetYazmaControllers implements Initializable {
         return sonrakiGun.getDayOfMonth();
     }
 
-    public String gunAdi(){
-        if(comboGun.getValue().equals("Pazartesi"))
+    public String gunAdi() {
+        if (comboGun.getValue().equals("Pazartesi"))
             return "monday";
         else if (comboGun.getValue().equals("Sali"))
             return "tuesday";
@@ -278,8 +274,9 @@ public class DiyetYazmaControllers implements Initializable {
             return "saturday";
         return "sunday";
     }
-    public String ogunAdi(){
-        if(ComboOgun.getValue().equals("Kahvaltı"))
+
+    public String ogunAdi() {
+        if (ComboOgun.getValue().equals("Kahvaltı"))
             return "breakfast";
         else if (ComboOgun.getValue().equals("Araöğün1"))
             return "snack";

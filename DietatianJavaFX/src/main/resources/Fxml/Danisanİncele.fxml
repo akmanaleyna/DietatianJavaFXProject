@@ -153,7 +153,7 @@
                         <VBox alignment="CENTER" prefHeight="153.0" prefWidth="193.0">
                            <children>
                               <Label fx:id="lblEkBilgiler" alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="192.0" text="Ek Bilgiler" />
-                              <JFXTextArea fx:id="textArea" prefHeight="120.0" prefWidth="194.0" style="-fx-background-color: transparent;" />
+                              <JFXTextArea fx:id="textAreaNot" prefHeight="120.0" prefWidth="194.0" style="-fx-background-color: transparent;" />
                            </children>
                         </VBox>
                      </children>

@@ -82,37 +82,6 @@
                         </Tab>
                     </tabs>
                   </TabPane>
-                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="118.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" stylesheets="@../Styles/login.css" text="Toplam Kalori :">
-                           <styleClass>
-                              <String fx:value="report-container" />
-                              <String fx:value="label-text" />
-                           </styleClass>
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <padding>
-                              <Insets bottom="-15.0" />
-                           </padding>
-                        </Label>
-                        <Label fx:id="lblToplamKaloriListe" alignment="CENTER" contentDisplay="CENTER" stylesheets="@../Styles/login.css" text="1500">
-                           <HBox.margin>
-                              <Insets bottom="-10.0" left="15.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <styleClass>
-                              <String fx:value="label-text" />
-                              <String fx:value="report-container" />
-                           </styleClass>
-                        </Label>
-                     </children>
-                  </HBox>
                </children>
                <padding>
                   <Insets bottom="20.0" right="20.0" top="10.0" />
@@ -152,13 +121,13 @@
                               <String fx:value="label-text" />
                            </styleClass>
                         </Label>
-                        <ChoiceBox fx:id="comboGun" prefHeight="26.0" prefWidth="241.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css"/>
-                        <ChoiceBox fx:id="ComboOgun" prefHeight="26.0" prefWidth="241.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" onAction="#onComboOgunSelected">
+                        <ChoiceBox fx:id="comboGun" prefHeight="26.0" prefWidth="241.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" />
+                        <ChoiceBox fx:id="ComboOgun" onAction="#onComboOgunSelected" prefHeight="26.0" prefWidth="241.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css">
                            <VBox.margin>
                               <Insets left="20.0" right="20.0" top="10.0" />
                            </VBox.margin>
                         </ChoiceBox>
-                        <ChoiceBox fx:id="ComboKategori" prefHeight="26.0" prefWidth="241.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css" onAction="#onComboKategoriSelected">
+                        <ChoiceBox fx:id="ComboKategori" onAction="#onComboKategoriSelected" prefHeight="26.0" prefWidth="241.0" style="-fx-background-radius: 20;" styleClass="label-text" stylesheets="@../Styles/login.css">
                            <VBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>

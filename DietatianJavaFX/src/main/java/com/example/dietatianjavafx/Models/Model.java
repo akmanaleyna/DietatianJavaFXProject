@@ -137,18 +137,7 @@ public class Model {
     public String getNameUID(String uid) {
         return crudFirebase.getFullNameByDocumentId(uid);
     }
-/*
 
-
-
-
-
-
-
-
-
-
- */
     public ObservableList<DateRandevu> getListDateRandevu() {
         return listRandevu;
     }
@@ -187,8 +176,18 @@ public class Model {
             // Calendar nesnesini şu anki tarihle ayarla
             calendar.setTime(currentDate);
 
-            if ((calendar.get(Calendar.DAY_OF_MONTH) <= Integer.parseInt(dateRandevu.getFirstDay()) && (calendar.get(Calendar.MONTH) + 1) == Integer.parseInt(dateRandevu.getFirstMonth())) || ((calendar.get(Calendar.MONTH) + 1) <= Integer.parseInt(dateRandevu.getFirstMonth())) || (((calendar.get(Calendar.MONTH) + 1) == 12) && (Integer.parseInt(dateRandevu.getFirstMonth()) >= 1))) {
-                filteredList.add(dateRandevu);
+            String firstDay = dateRandevu.getFirstDay();
+            String firstMonth = dateRandevu.getFirstMonth();
+
+            if (!firstDay.isEmpty() && !firstMonth.isEmpty()) {
+                int day = Integer.parseInt(firstDay);
+                int month = Integer.parseInt(firstMonth);
+
+                if ((calendar.get(Calendar.DAY_OF_MONTH) <= day && (calendar.get(Calendar.MONTH) + 1) == month)
+                        || ((calendar.get(Calendar.MONTH) + 1) <= month)
+                        || (((calendar.get(Calendar.MONTH) + 1) == 12) && (month >= 1))) {
+                    filteredList.add(dateRandevu);
+                }
             }
         }
 
@@ -199,8 +198,8 @@ public class Model {
         return crudFirebase.updateDate(date);
     }
 
-    public Boolean deleteRandevu(String uid,String firstDay, String firstMonth,String confirmedDate){
-        return crudFirebase.deleteDate(uid,firstDay,firstMonth,confirmedDate);
+    public Boolean deleteRandevu(String uid,String firstDay, String firstMonth,String confirmedDate,String isConfirmed){
+        return crudFirebase.deleteDate(uid,firstDay,firstMonth,confirmedDate,isConfirmed);
     }
 
     public String getDocumentIdbyFullName(String fullName){
@@ -267,7 +266,13 @@ public class Model {
         boolean success = printFieldsInMap(name);
         if (!success) {
             // Hata işleme veya geri bildirim yapma
+            return;
         }
+
+        // Tekrarlı verileri filtrele
+        Set<String> uniqueFields = new HashSet<>(fieldname);
+        fieldname.clear();
+        fieldname.addAll(uniqueFields);
     }
 
     public String printFieldValueInMap(String fieldname, String mapname){

@@ -285,7 +285,7 @@ public class CRUDFirebase {
         return key;
     }
 
-    public boolean deleteDate(String uid, String firstDay, String firstMonth,String confirmedDate) {
+    public boolean deleteDate(String uid, String firstDay, String firstMonth,String confirmedDate,String isConfirmed) {
         // Koleksiyon referansını alın
         CollectionReference dateCollectionRef = db.collection("date");
 
@@ -294,6 +294,7 @@ public class CRUDFirebase {
                 .whereEqualTo("firstDay", firstDay)
                 .whereEqualTo("firstMonth", firstMonth)
                 .whereEqualTo("confirmedDate", confirmedDate)
+                .whereEqualTo("isConfirmed",isConfirmed)
                 .get();
         try {
             QuerySnapshot querySnapshot = future.get();
@@ -577,7 +578,6 @@ public class CRUDFirebase {
     public boolean deleteChatsByID(String uid) {
         try {
             Query query = db.collection("chats").whereEqualTo("admin", uid);
-
             ApiFuture<QuerySnapshot> future = query.get();
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
@@ -586,18 +586,35 @@ public class CRUDFirebase {
                 String documentId = document.getId();
                 document.getReference().delete();
                 System.out.println("Belge silindi: " + documentId);
+
+                // Alt koleksiyonları sil
+                deleteSubcollections(document.getReference().collection("messages"));
             }
-            return true; // Belge ve kullanıcı başarıyla silindi
+            return true; // Belge ve alt koleksiyonlar başarıyla silindi
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // Belge ve kullanıcı silme işlemi başarısız oldu
+            return false; // Belge ve alt koleksiyonları silme işlemi başarısız oldu
+        }
+    }
+
+    private void deleteSubcollections(CollectionReference collectionRef) throws Exception {
+        ApiFuture<QuerySnapshot> future = collectionRef.get();
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+
+        for (QueryDocumentSnapshot document : documents) {
+            // Belge referansını al ve belgeyi sil
+            String documentId = document.getId();
+            document.getReference().delete();
+            System.out.println("Alt koleksiyon silindi: " + documentId);
+
+            // Alt koleksiyonları sil
+            deleteSubcollections(collectionRef.document(documentId).collection("messages"));
         }
     }
 
     public boolean deleteEatenByID(String uid) {
         try {
             Query query = db.collection("eaten").whereEqualTo("userId", uid);
-
             ApiFuture<QuerySnapshot> future = query.get();
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();
 
@@ -606,13 +623,32 @@ public class CRUDFirebase {
                 String documentId = document.getId();
                 document.getReference().delete();
                 System.out.println("Belge silindi: " + documentId);
+
+                // Alt koleksiyonları sil
+                deleteSubcollectionsRecursive(document.getReference().collection("eatens"));
             }
-            return true; // Belge ve kullanıcı başarıyla silindi
+            return true; // Belge ve alt koleksiyonlar başarıyla silindi
         } catch (Exception e) {
             e.printStackTrace();
-            return false; // Belge ve kullanıcı silme işlemi başarısız oldu
+            return false; // Belge ve alt koleksiyonları silme işlemi başarısız oldu
         }
     }
+
+    private void deleteSubcollectionsRecursive(CollectionReference collectionRef) throws Exception {
+        ApiFuture<QuerySnapshot> future = collectionRef.get();
+        List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+
+        for (QueryDocumentSnapshot document : documents) {
+            // Belge referansını al ve belgeyi sil
+            String documentId = document.getId();
+            document.getReference().delete();
+            System.out.println("Alt koleksiyon silindi: " + documentId);
+
+            // Alt koleksiyonları sil
+            deleteSubcollectionsRecursive(collectionRef.document(documentId).collection("eatens"));
+        }
+    }
+
 
     public boolean deleteDateByID(String uid) {
         try {
@@ -1134,7 +1170,7 @@ public class CRUDFirebase {
                                         Map<String, Object> lunchMap = (Map<String, Object>) veri.get(key);
                                         if (lunchMap != null) {
                                             for (Map.Entry<String, Object> entry : lunchMap.entrySet()) {
-                                                list.add(hesaplaVeYazdir(String.valueOf(entry.getKey()), String.valueOf(entry.getValue())));
+                                                list.add(hesaplaVeYazdir(String.valueOf(entry.getKey()).trim(), String.valueOf(entry.getValue()).trim()));
                                                 System.out.println(hesaplaVeYazdir(String.valueOf(entry.getKey()), String.valueOf(entry.getValue())));
                                                 this.key = true;
                                             }

@@ -101,6 +101,9 @@ public class SaglikliTarifler implements Initializable {
             System.out.println("Kayıt Başarılı!!!");
             Model.getInstance().updateListTarif();
             clear();
+            File selectedFile = new File("C:/Users/aleyn/OneDrive/Desktop/DietatianJavaFX/src/main/resources/Images/Sebze.png");
+            Image image = new Image(selectedFile.toURI().toString());
+            ımgViewTarif.setImage(image);
         }
     }
     public void clear(){
@@ -117,7 +120,7 @@ public class SaglikliTarifler implements Initializable {
         if (!arananTarifAdi.isEmpty()) {
             ObservableList<Tarif> filteredList = FXCollections.observableArrayList();
             for (Tarif tarif : Model.getInstance().getListTarif()) {
-                if (tarif.getTarifAdi().equalsIgnoreCase(arananTarifAdi)) {
+                if (tarif.getTarifAdi().trim().equalsIgnoreCase(arananTarifAdi)) {
                     filteredList.add(tarif);
                 }
             }

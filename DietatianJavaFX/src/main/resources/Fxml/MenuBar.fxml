@@ -76,11 +76,7 @@
                   <Insets bottom="7.0" left="5.0" right="5.0" top="8.0" />
                </VBox.margin>
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/video-camera.png" />
-                     </image>
-                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Button>
             <AnchorPane prefHeight="50.0" prefWidth="50.0" />

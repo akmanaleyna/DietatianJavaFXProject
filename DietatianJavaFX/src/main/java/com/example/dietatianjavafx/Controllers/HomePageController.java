@@ -43,7 +43,7 @@ public class HomePageController implements Initializable {
     void add(ActionEvent event) {
         if(crudFirebase.addMotivasyon(txtMotivasyon.getText().trim().toString())){
             System.out.println("Kayıt Başarılı");
-            lblMotivasyon.setText("");
+            txtMotivasyon.setText("");
         }
     }
     @Override

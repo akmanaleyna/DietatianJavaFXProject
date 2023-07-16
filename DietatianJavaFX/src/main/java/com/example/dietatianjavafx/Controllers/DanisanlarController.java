@@ -70,7 +70,7 @@ public class DanisanlarController implements Initializable {
         if (!arananAd.isEmpty()) {
             ObservableList<Danisan> filteredList = FXCollections.observableArrayList(); // Boş bir ObservableList oluştur
             for (Danisan danisan : Model.getInstance().getListDanisan()) {
-                if (danisan.getAdiSoyadi().equalsIgnoreCase(arananAd)) { // Aranan ad ile eşleşen danışanları bul
+                if (danisan.getAdiSoyadi().trim().equalsIgnoreCase(arananAd)) { // Aranan ad ile eşleşen danışanları bul
                     filteredList.add(danisan);
                 }
             }

@@ -89,8 +89,8 @@ public class DanisanInceleController implements Initializable {
                     lblKalori.setText("Yaklaşık Kalori ~ " + (int) kalori);
                 }
                 lblSuMiktari.setText("Günlük Su Miktarı ~ " + (int) (Double.parseDouble(danisan.getKilo()) * 30) + "ml");
-                if(danisan.getHastaliklar() != "" || danisan.getNot() != "" )
-                    textAreaNot.setText(danisan.getHastaliklar() + danisan.getNot());
+                if(!danisan.getHastaliklar().equals("") || !danisan.getNot().equals(""))
+                    textAreaNot.setText(danisan.getHastaliklar().toString() + danisan.getNot().toString());
                 Model.getInstance().updateListKiloTakip(danisan);
                 tblView.setItems(Model.getInstance().getListKiloTakip());
                 kiloColumn.setCellValueFactory(new PropertyValueFactory<>("kilo"));
@@ -148,8 +148,14 @@ public class DanisanInceleController implements Initializable {
                 kiloColumn.setCellValueFactory(new PropertyValueFactory<>("kilo"));
                 tarihColumn.setCellValueFactory(new PropertyValueFactory<>("tarih"));
             }
+            datePickerTarih.setValue(null);
+            txtFieldKilo.setText(null);
         }
         Model.getInstance().updateListDanisan();
+        Model.getInstance().updateListKiloTakip(danisan);
+        tblView.setItems(Model.getInstance().getListKiloTakip());
+        kiloColumn.setCellValueFactory(new PropertyValueFactory<>("kilo"));
+        tarihColumn.setCellValueFactory(new PropertyValueFactory<>("tarih"));
     }
 
 
@@ -163,6 +169,10 @@ public class DanisanInceleController implements Initializable {
             datePickerTarih.setValue(null);
             txtFieldKilo.setText(null);
             Model.getInstance().updateListDanisan();
+            Model.getInstance().updateListKiloTakip(danisan);
+            tblView.setItems(Model.getInstance().getListKiloTakip());
+            kiloColumn.setCellValueFactory(new PropertyValueFactory<>("kilo"));
+            tarihColumn.setCellValueFactory(new PropertyValueFactory<>("tarih"));
         }
     }
 

@@ -57,7 +57,7 @@ public class RandevuIcerikKontroller implements Initializable {
     @FXML
     void delete(ActionEvent event) {
         //Model.getInstance().getDocumentIdbyFullName(lblAdSoyad.getText())
-        Model.getInstance().deleteRandevu(dateRandevu.getUid().toString(),dateRandevu.getFirstDay().toString(), dateRandevu.getFirstMonth().toString(),dateRandevu.getConfirmedDate().toString());
+        Model.getInstance().deleteRandevu(dateRandevu.getUid().toString(),dateRandevu.getFirstDay().toString(), dateRandevu.getFirstMonth().toString(),dateRandevu.getConfirmedDate().toString(),dateRandevu.getIsConfirment().toString());
         Model.getInstance().updateListRandevu();
     }
 
@@ -66,7 +66,7 @@ public class RandevuIcerikKontroller implements Initializable {
         if(Model.getInstance().updateRandevu(dateRandevu)){
             Model.getInstance().updateListRandevu();
         }
-
+        Model.getInstance().updateListRandevu();
     }
 
 
